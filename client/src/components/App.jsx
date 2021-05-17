@@ -11,8 +11,6 @@ import { Fragment } from "react";
 
 function App() {
     return (
-        // <div><h1>sanyam</h1></div>
-        // // <Navbar />
         <Router>
             <Fragment>
                 <Navbar />
