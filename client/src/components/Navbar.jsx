@@ -47,12 +47,12 @@ function NotificationItem(props) {
         return (
             <div className="notification-item">
                 {/* <a href=""> */}
-                    <div className="ss">
-                        <p style={{ color: "white" }}> <EventNoteIcon /></p>
-                    </div>
-                    <div className="sm">
-                        <p style={{ fontWeight: "600", display: "inline", color: "white" }}> {props.date} | {props.description}</p>
-                    </div>
+                <div className="ss">
+                    <p style={{ color: "white" }}> <EventNoteIcon /></p>
+                </div>
+                <div className="sm">
+                    <p style={{ fontWeight: "600", display: "inline", color: "white" }}> {props.date} | {props.description}</p>
+                </div>
                 {/* </a> */}
                 <hr className="notification-separator" />
             </div>
@@ -61,10 +61,12 @@ function NotificationItem(props) {
     else {
         return (
             <div className="notification-item">
-                <a className={"dropdown-item"} href="">
-                    <p style={{ fontWeight: "600" }}><EventNoteIcon /> {props.date} |</p>
-                    <p style={{ fontWeight: "500" }}>{props.description}</p>
-                </a>
+               <div className="ss">
+                    <p style={{ color: "white" }}> <EventNoteIcon /></p>
+                </div>
+                <div className="sm">
+                    <p style={{ fontWeight: "600", display: "inline", color: "white" }}> {props.date} | {props.description}</p>
+                </div>
                 <hr className="notification-separator" />
             </div>
         );
@@ -135,17 +137,20 @@ function Navbar() {
             <nav className="navbar navbar-expand-lg navbar-primary pad-mgn fixed-top">
 
                 <div >
-                    <img className="saelogo" src={logo} alt="saelogo" />
-                    <a className="navbar-brand" href="" >
+                <img className="saelogo" src={logo} alt="saelogo" />
+                    <Link className="navbar-brand" to="/">
+                        
                         <h6 >{isMobile ? "SAE IIT BHU" : "Society of Automotive Engineers - IIT BHU Varanasi"}</h6>
-                    </a>
+                    </Link>
                 </div>
 
+                {isMobile && <div className="nav-item dropdown"><Notifications /></div>}
+                
                 <button className="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ border: "1px white solid" }}>
                     <ListIcon style={{ color: "white" }} />
                 </button>
 
-                {isMobile && <li className="nav-item"><Notifications /></li>}
+                
 
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -174,9 +179,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/login">Log In <EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
                         </li>
-                        {!isMobile && <li className="nav-item">
-                            <Notifications />
-                        </li>}
+                        {!isMobile && <li className="nav-item"><Notifications /></li>}
+                            
+                        
 
 
                     </ul>

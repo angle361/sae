@@ -148,8 +148,7 @@ hr {
   display:inline-block;
   position: relative;
   left: 25px;
-  /* background-color:green; */
-  width:380px;
+  width:90%;
 }
 
 .dropdown-container {
@@ -173,6 +172,7 @@ hr {
   margin-top: 35%;
   right:0;
   left: auto;
+  width:400px;
 }
 
 .dropdown-menu-center {
@@ -201,6 +201,7 @@ hr {
 }
 .notification-item {
   font-size: 0.9rem;
+  margin-bottom: 5px;
 }
 .MuiSvgIcon-root{
   /* display:inline; */
@@ -652,6 +653,12 @@ h2 {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
+  .navbar-expand-lg .navbar-nav {
+    -ms-flex-direction: row;
+    flex-direction: column;
+    padding-left: 0;
+}
+
   .saelogo {
     width: 110px;
     height: 40px;
@@ -665,25 +672,26 @@ h2 {
     width: 50px;
   }
   .dropdown {
-    margin-left: 38px;
-    margin-right: 2px;
+    margin-left: 20px;
+    margin-right: 5px;
+    margin-top: 0;
   }
   .dropdown-menu{
     margin-top: 80%;
     position: absolute;
-    /* width: 417px; */
-    left:-620%;  
+    width: 300px;
+    left: -250px; 
   }
-  
+  .navbar-toggler {
+    /* position: absolute;
+    right:10px */
+  }
   .header-navigator .pad-mgn {
     padding: 0.1% 1;
     margin: 0;
     background-color: black;
   }
 
-  .notification-item {
-    width: 420px;
-  }
 
   /* Title Section */
   #title {
@@ -766,8 +774,10 @@ h2 {
   .image-descriptive-box h4 {
     text-align: left;
   }
+  .footer-box-elements {
+    font-size: 2rem;
+  }
 
-}
   /*.footer-box {
     font-size: 0.9rem;
     padding-top: 10%;
