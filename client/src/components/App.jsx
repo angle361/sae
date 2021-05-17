@@ -11,21 +11,21 @@ import { Fragment } from "react";
 
 function App() {
     return (
-        <div><h1>sanyam</h1></div>
-        // <Navbar />
-        // <Router>
-        //     <Fragment>
-        //         <Navbar />
-        //         <Switch>
-        //             <Route path="/" exact component={Title} />
-        //             <Route path="/projects" component={Projects} />
-        //             <Route path="/events" component={Events} />
-        //             <Route path="/icengine" component={Icengine}/>
-        //             <Route path="/login" component={Login}/>
-        //         </Switch>
-        //         <Footer />
-        //     </Fragment>
-        // </Router>
+        // <div><h1>sanyam</h1></div>
+        // // <Navbar />
+        <Router>
+            <Fragment>
+                <Navbar />
+                <Switch>
+                    <Route path="/" exact component={Title} />
+                    <Route path="/projects" component={Projects} />
+                    <Route path="/events" component={Events} />
+                    <Route path="/icengine" component={Icengine}/>
+                    <Route path="/login" component={Login}/>
+                </Switch>
+                <Footer />
+            </Fragment>
+        </Router>
     );
 }
 
