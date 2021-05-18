@@ -76,7 +76,7 @@ function NotificationItem(props) {
 
 function Notifications() {
     const [notify, setNotify] = useState([]);
-    const apiURL = "http://localhost:5000/notifications";
+    const apiURL = "/notifications";
     const fetchData = async () => {
         const response = await axios.get(apiURL);
         // console.log(response.data.length);
