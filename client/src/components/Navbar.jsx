@@ -132,6 +132,18 @@ function Navbar() {
         }
     }
 
+    const [collapseEnable,setCollapseEnable] = useState(false);
+    function Collapse(){
+
+    }
+    
+        window.addEventListener('click', ()=>{
+            setCollapseEnable(true);
+        });
+      
+    
+      
+
     return (
         <div className="header-navigator">
             <nav className="navbar navbar-expand-lg navbar-primary pad-mgn fixed-top">
@@ -146,11 +158,12 @@ function Navbar() {
 
                 {isMobile && <div className="nav-item dropdown"><Notifications /></div>}
                 
-                <button className="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style={{ border: "1px white solid" }}>
+                <button className="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                aria-controls="navbarSupportedContent" aria-haspopup="true" aria-expanded="false" style={{ border: "1px white solid" }}>
                     <ListIcon style={{ color: "white" }} />
                 </button>
 
-                
+                {/* {collapseEnable && <div><h1>sanyam</h1></div>} */}
 
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">

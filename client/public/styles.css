@@ -101,7 +101,7 @@ hr {
 .navbar-expand-lg .navbar-nav {
     -ms-flex-direction: row;
     flex-direction: row;
-    padding-left: 100px;
+    padding-left: 70px;
 }
 
 
@@ -158,9 +158,7 @@ hr {
 }
 
 .dropdown {
-  margin-left: 38px;
-  margin-right: 10px;
-  margin-top: 5px;
+  margin-right: 5px;
 }
 
 .dropdown-style {
@@ -538,7 +536,7 @@ hr {
   justify-content:normal;
 }
 
-/*///////////////////////////////login//////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////login////////////////////////////////////////////////////////*/
 
 .form-container{
   display: flex;
@@ -634,7 +632,8 @@ h2 {
 
 
 @media only screen and (max-width: 768px) {
-  /* Navigation Bar */
+
+  /*/////////////////////////////////////////////////////// Navigation Bar ///////////////////////////////////////////////////*/
   .navbar {
     padding: 0;
   }
@@ -657,7 +656,7 @@ h2 {
     -ms-flex-direction: row;
     flex-direction: column;
     padding-left: 0;
-}
+  }
 
   .saelogo {
     width: 110px;
@@ -672,7 +671,7 @@ h2 {
     width: 50px;
   }
   .dropdown {
-    margin-left: 20px;
+    margin-left: 30px;
     margin-right: 5px;
     margin-top: 0;
   }
@@ -682,10 +681,6 @@ h2 {
     width: 300px;
     left: -250px; 
   }
-  .navbar-toggler {
-    /* position: absolute;
-    right:10px */
-  }
   .header-navigator .pad-mgn {
     padding: 0.1% 1;
     margin: 0;
@@ -693,7 +688,7 @@ h2 {
   }
 
 
-  /* Title Section */
+  /*////////////////////////////////////////////////// Title Section//////////////////////////////////////////////////////////*/
   #title {
     padding: 10% 0 2%;
     margin: 5%;
@@ -730,7 +725,7 @@ h2 {
     font-size: 1.5rem;
   }
 
-  /* footer */
+  /*/////////////////////////////////////////////////// footer///////////////////////////////////////////////////// */
   #footer {
     padding: 2% 5%;
   }
@@ -778,17 +773,10 @@ h2 {
     font-size: 2rem;
   }
 
-  /*.footer-box {
-    font-size: 0.9rem;
-    padding-top: 10%;
-    padding-left: 0;
-    padding-right: 0;
-    padding-bottom: 1%;
-  }*/
-
-  /* events */
-
- 
+  /*///////////////////////////////////////////////// events ///////////////////////////////////////////////////////////*/
+  #projects, #events{
+    margin: 12% 0 15%;
+  }
 
   @import url('https://fonts.googleapis.com/css?family=Numans');
 
@@ -877,3 +865,4 @@ h2 {
   .links a{
   margin-left: 4px;
   }
+}  
