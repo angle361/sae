@@ -6,6 +6,8 @@ import Footer from "./Footer/Footer";
 import Title from "./Title";
 import Icengine from "./Icengine";
 import Login from "./Login";
+import Register from "./Register";
+import EventRegister from "./EventRegister";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Fragment } from "react";
 
@@ -19,7 +21,9 @@ function App() {
                     <Route path="/projects" component={Projects} />
                     <Route path="/events" component={Events} />
                     <Route path="/icengine" component={Icengine}/>
-                    <Route path="/login" component={Login}/>
+                    <Route path="/login" exact component={Login}/>
+                    <Route path="/register" exact component={Register}/>
+                    <Route path="/registerforevent" exact component={EventRegister}/>
                 </Switch>
                 <Footer />
             </Fragment>

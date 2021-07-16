@@ -2,7 +2,7 @@
   "name": "example-create-react-app-express",
   "version": "1.0.0",
   "description": "Example on using create-react-app with a Node Express Backend",
-  "author": "Esau Silva (https://esausilva.com)",
+  "author": "sanyam",
   "license": "MIT",
   "scripts": {
     "client": "npm start --prefix client",
@@ -13,11 +13,17 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "lodash": "^4.17.21",
     "mongoose": "^5.12.9",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.1.0",
     "path": "^0.12.7"
   },
   "devDependencies": {

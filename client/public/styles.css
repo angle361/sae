@@ -540,17 +540,25 @@ hr {
 
 .form-container{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   padding-top: 50px;
   padding-bottom: 50px;
 }
-.form-container .container {
+.signin-container{
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   width: 400px;
+  /* margin-bottom: 210px; */
+}
+.signup-container{
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  margin-left: 50px;
 }
 
 h2 {

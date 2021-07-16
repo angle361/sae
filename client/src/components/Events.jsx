@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from '@material-ui/core';
 import { useMediaQuery } from 'react-responsive';
-//import CardEntry from "./CardEntry";
+import { Link } from "react-router-dom";
+
+import axios from 'axios';
 
 import aquadrive from "../images/aquadrivelow.jpg";
 import axelerate from "../images/Axelerate.jpg";
@@ -55,21 +57,33 @@ const events = [
 
 ];
 
-function CardEntryOnMobile(item) {
+const CardEntryOnMobile = (item)=> {
 
-    const [variable, SetVariable] = useState(false);
-
+    const [variable, setVariable] = useState(false);
+    let name="";
     function ChangeStateOver() {
-        SetVariable(true);
+        setVariable(true);
     }
     function ChangeStateAway() {
-        SetVariable(false);
+        setVariable(false);
     }
 
     const animate = {
         animationName: "fadeInUp",
         animationDuration: "0.5s"
     }
+    const getUser = async ()=>{
+        const res = await axios({
+            method: "GET",
+            withCredentials: true,
+            url: "http://localhost:3000/registerforevent",
+        });
+        console.log(res.data);
+        name=res.data.username;
+        console.log(name);
+    }
+
+    
     // style={animate}
     return (
         <div className="card-custom">
@@ -92,10 +106,11 @@ function CardEntryOnMobile(item) {
                             <div>
                                 <img className="event-images" style={{ height: "50px", width: "50px" }} src={item.img} alt={item.name} />
                                 <h3>{item.name}</h3>
+                           
                                 <p style={{ whiteSpace: "pre-line" }}>{item.description.slice(0, 200) + "............"}</p>
                                 <Button onClick={ChangeStateAway} variant="outlined" style={{ backgroundColor: "white", color: "black", size:"small" ,marginRight:"20px"  }}>Back</Button>
-                                <Button variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Know more</Button>
-                                
+                               <Link to={name==""? "/registerforevent" : "/"}> <Button variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button></Link>
+                            
                                 
                             </div>
                         </div>
@@ -111,9 +126,10 @@ function CardEntryOnMobile(item) {
 
 
 
-function CardEntry(item) {
+const CardEntry= (item)=> {
     //console.log(item.style);
     const [onHover, setHover] = useState(false);
+    let name="";
 
     function ChangeStateOver() {
         setHover(true);
@@ -126,7 +142,18 @@ function CardEntry(item) {
         animationName: "fadeInUp",
         animationDuration: "0.5s"
     }
+    const getUser = async ()=>{
+        const res = await axios({
+            method: "GET",
+            withCredentials: true,
+            url: "http://localhost:3000/registerforevent",
+        });
+        console.log(res.data);
+        name=res.data.username;
+        console.log(name);
+    }
 
+    
     return (
         <div className="col-lg-3 col-6 event-box" >
             <div className="event-card" onMouseEnter={ChangeStateOver} onMouseLeave={ChangeStateAway}>
@@ -139,6 +166,7 @@ function CardEntry(item) {
                         <h3>{item.name}</h3>
                         <p style={{ fontSize: "0.8rem" }}>{item.description.slice(0, 320)}........</p>
                         <button type="button" className="btn btn-dark btn-sm">Know more</button>
+                        <Link to={name==""? "/registerforevent" : "/"}> <Button onClick={getUser} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button></Link>
                     </div>
                 </div>
             </div>
@@ -146,15 +174,16 @@ function CardEntry(item) {
     );
 }
 
-function Events() {
+const Events = () => {
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
     });
-
+    
     if (!isMobile) {
         return (
             <section id="events" className="">
                 <h2>EVENTS</h2>
+               
                 <div className="row">
                     {events.map(props =>
                         <CardEntry
@@ -171,6 +200,7 @@ function Events() {
         return (
             <section id="events">
                 <h2>EVENTS</h2>
+               
                 <div className="row row-custom">
                     {events.map(props =>
                         <CardEntryOnMobile
@@ -181,6 +211,7 @@ function Events() {
                         />
                     )}
                 </div>
+                
             </section>
         );
 

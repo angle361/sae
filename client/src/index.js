@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-//import Router from "react-router";
 import App from "./components/App";
-// import routes from './routes';
+import { StateProvider } from './components/StateProvider';
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+    <StateProvider>
+        <App />
+    </StateProvider>,
+    document.getElementById("root"));
 
 
 

@@ -1,41 +1,39 @@
-import React from "react";
+import React ,{useContext} from "react";
+import { StateContext } from './StateProvider';
 
 function Login() {
+
+	  const [deta, setData] = useContext(StateContext);
 	return (
-		 
+
 		<div style={{ paddingTop: "80px" }}>
-		
+
 			<div className="form-container">
-				<div className="container">
-					<form id="form" className="form">
-						<h2>Register With Us</h2>
+
+				<div className="signin-container">
+					<form id="form" className="form"  action="/login" method="POST">
+						<h2>Already a User? Login</h2>
 						<div className="form-contrl">
-							<label for="username">Username</label>
-							<input type="text" id="username" placeholder="Enter username" />
+							<label for="email">Email*</label>
+							<input type="text" id="email" name ="username" placeholder="Enter email" />
 							<small>Error message</small>
 						</div>
 						<div className="form-contrl">
-							<label for="email">Email</label>
-							<input type="text" id="email" placeholder="Enter email" />
+							<label for="password">Password*</label>
+							<input type="password" id="password" name ="password" placeholder="Enter password" />
 							<small>Error message</small>
 						</div>
-						<div className="form-contrl">
-							<label for="password">Password</label>
-							<input type="password" id="password" placeholder="Enter password" />
-							<small>Error message</small>
-						</div>
-						<div className="form-contrl">
-							<label for="password2">Confirm Password</label>
-							<input
-								type="password"
-								id="password2"
-								placeholder="Enter password again"
-							/>
-							<small>Error message</small>
-						</div>
-						<button type="submit">Submit</button>
+						<button type="submit">Login</button>
 					</form>
+					<h1>{deta? "logged in": " not logged in"}</h1>
+				<h1>ncghnhn</h1>
 				</div>
+
+
+                
+				<h1>ncghnhn</h1>
+
+
 			</div>
 		</div>
 	);
