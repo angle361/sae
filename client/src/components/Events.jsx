@@ -56,11 +56,11 @@ const events = [
     }
 
 ];
-
+let name="";
 const CardEntryOnMobile = (item)=> {
 
     const [variable, setVariable] = useState(false);
-    let name="";
+    
     function ChangeStateOver() {
         setVariable(true);
     }
@@ -73,14 +73,15 @@ const CardEntryOnMobile = (item)=> {
         animationDuration: "0.5s"
     }
     const getUser = async ()=>{
+        name="";
         const res = await axios({
             method: "GET",
             withCredentials: true,
             url: "http://localhost:3000/registerforevent",
         });
-        console.log(res.data);
-        name=res.data.username;
-        console.log(name);
+        //console.log(res.data);
+        if(res.data)name=res.data.username;
+        console.log("dcfs");
     }
 
     
@@ -109,7 +110,7 @@ const CardEntryOnMobile = (item)=> {
                            
                                 <p style={{ whiteSpace: "pre-line" }}>{item.description.slice(0, 200) + "............"}</p>
                                 <Button onClick={ChangeStateAway} variant="outlined" style={{ backgroundColor: "white", color: "black", size:"small" ,marginRight:"20px"  }}>Back</Button>
-                               <Link to={name==""? "/registerforevent" : "/"}> <Button variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button></Link>
+                               <Link to={name==""? "/login" : "/registerforevent"}> <Button onClick={getUser} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button></Link>
                             
                                 
                             </div>
@@ -129,7 +130,7 @@ const CardEntryOnMobile = (item)=> {
 const CardEntry= (item)=> {
     //console.log(item.style);
     const [onHover, setHover] = useState(false);
-    let name="";
+   
 
     function ChangeStateOver() {
         setHover(true);
@@ -142,17 +143,22 @@ const CardEntry= (item)=> {
         animationName: "fadeInUp",
         animationDuration: "0.5s"
     }
+    
     const getUser = async ()=>{
+        if(name===""){
         const res = await axios({
             method: "GET",
             withCredentials: true,
             url: "http://localhost:3000/registerforevent",
         });
-        console.log(res.data);
-        name=res.data.username;
-        console.log(name);
+        console.log(res);
+        if(res.data!=="")name=res.data.username;
+        console.log(name);}
+        
     }
-
+    useEffect(()=>{
+        getUser();
+    })
     
     return (
         <div className="col-lg-3 col-6 event-box" >
@@ -166,7 +172,7 @@ const CardEntry= (item)=> {
                         <h3>{item.name}</h3>
                         <p style={{ fontSize: "0.8rem" }}>{item.description.slice(0, 320)}........</p>
                         <button type="button" className="btn btn-dark btn-sm">Know more</button>
-                        <Link to={name==""? "/registerforevent" : "/"}> <Button onClick={getUser} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button></Link>
+                        <Link to={name===""? "/login" : "/registerforevent"}> <Button variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button></Link>
                     </div>
                 </div>
             </div>

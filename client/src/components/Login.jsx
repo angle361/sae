@@ -3,7 +3,7 @@ import { StateContext } from './StateProvider';
 
 function Login() {
 
-	  const [deta, setData] = useContext(StateContext);
+	  
 	return (
 
 		<div style={{ paddingTop: "80px" }}>
@@ -25,13 +25,9 @@ function Login() {
 						</div>
 						<button type="submit">Login</button>
 					</form>
-					<h1>{deta? "logged in": " not logged in"}</h1>
-				<h1>ncghnhn</h1>
+				
+				
 				</div>
-
-
-                
-				<h1>ncghnhn</h1>
 
 
 			</div>
