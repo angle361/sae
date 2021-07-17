@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from '@material-ui/core';
 import { useMediaQuery } from 'react-responsive';
 import { Link } from "react-router-dom";
-
+import { Redirect } from "react-router-dom";
 import axios from 'axios';
 
 import aquadrive from "../images/aquadrivelow.jpg";
@@ -144,21 +144,30 @@ const CardEntry= (item)=> {
         animationDuration: "0.5s"
     }
     
-    
+  
     
         const getUser = async ()=>{
-            if(name===""){
-            const res = await axios({
-                method: "GET",
-                withCredentials: true,
-                url: "http://localhost:3000/registerforevent",
-            });
-            console.log(res);
-            if(res.data!=="")name=res.data.username;
-            console.log(name);}
             
+            
+                const res = await axios({
+                    method: "GET",
+                    withCredentials: true,
+                    url: "http://localhost:3000/registerforevent",
+                });
+                console.log(res.data);
+                //if(res.data!=="")name=res.data.username;
+                //name=res.data.username;
+                console.log("gg");
+                
+            
+            if(res.data!==""){
+                window.location = "/registerforevent";
+             }  
+            else{
+                window.location = "/login";        
+            }
         }
-
+        
     
     return (
         <div className="col-lg-3 col-6 event-box" >
@@ -172,7 +181,8 @@ const CardEntry= (item)=> {
                         <h3>{item.name}</h3>
                         <p style={{ fontSize: "0.8rem" }}>{item.description.slice(0, 320)}........</p>
                         <button type="button" className="btn btn-dark btn-sm">Know more</button>
-                        <Link to={name===""? "/login" : "/registerforevent"}> <Button onClick={getUser} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button></Link>
+                        <Button onClick={getUser} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button>
+                         {/* {clicked && name===""?<Redirect to="/login" />:<Redirect to="/registerforevent" />} */}
                     </div>
                 </div>
             </div>
