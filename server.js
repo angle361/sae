@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const notification = require("./models/notifications");
 const User = require('./models/users');
-const RegisteredUser = require('./models/registeredUsers');
+//const RegisteredUser = require('./models/registeredUsers');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
@@ -63,8 +63,8 @@ app.get('/notifications', (req, res) => {
   });
 });
 
-app.post("/login", (req, res, next) => {
-  passport.authenticate("local", (err, user, info) => {
+app.post("/login", async (req, res, next) => {
+  await passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
     if (!user) res.send("No User Exists");
     else {
@@ -104,15 +104,15 @@ app.get("/registerforevent",(req,res)=>{
   console.log(req.user);
 })
 
-app.post("/registerforevent",(req,res)=>{
-  const newRegisteredUser = new RegisteredUser({
-    username: req.body.username,
-    email: req.body.email,
-  });
-  newRegisteredUser.save();
-  res.redirect("/");
+// app.post("/registerforevent",(req,res)=>{
+//   const newRegisteredUser = new RegisteredUser({
+//     username: req.body.username,
+//     email: req.body.email,
+//   });
+//   newRegisteredUser.save();
+//   res.redirect("/");
 
-});
+// });
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static('client/build'));
