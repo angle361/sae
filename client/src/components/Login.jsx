@@ -14,12 +14,12 @@ function Login() {
 					<form id="form" className="form"  action="/login" method="POST">
 						<h2>Already a User? Login</h2>
 						<div className="form-contrl">
-							<label for="email">Email*</label>
+							<label>Email*</label>
 							<input type="text" id="email" name ="username" placeholder="Enter email" />
 							<small>Error message</small>
 						</div>
 						<div className="form-contrl">
-							<label for="password">Password*</label>
+							<label>Password*</label>
 							<input type="password" id="password" name ="password" placeholder="Enter password" />
 							<small>Error message</small>
 						</div>

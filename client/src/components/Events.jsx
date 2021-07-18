@@ -77,7 +77,7 @@ const CardEntryOnMobile = (item)=> {
         const res = await axios({
             method: "GET",
             withCredentials: true,
-            url: "/registerforevent",
+            url: "/getUser",
         });
         console.log(res.data);
         // if(res.data)name=res.data.username;
@@ -158,7 +158,7 @@ const CardEntry= (item)=> {
                 const res = await axios({
                     method: "GET",
                     withCredentials: true,
-                    url: "/registerforevent",
+                    url: "/getUser",
                 });
                 console.log(res.data);
                 //if(res.data!=="")name=res.data.username;

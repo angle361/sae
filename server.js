@@ -99,7 +99,7 @@ app.post("/register", (req, res) => {
   });
 });
 
-app.get("/registerforevent",(req,res)=>{
+app.get("/getUser",(req,res)=>{
   res.send(req.user);
   console.log(req.user);
 })
