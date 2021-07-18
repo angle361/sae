@@ -77,11 +77,17 @@ const CardEntryOnMobile = (item)=> {
         const res = await axios({
             method: "GET",
             withCredentials: true,
-            url: "http://localhost:3000/registerforevent",
+            url: "/registerforevent",
         });
-        //console.log(res.data);
-        if(res.data)name=res.data.username;
-        console.log("dcfs");
+        console.log(res.data);
+        // if(res.data)name=res.data.username;
+        // console.log("dcfs");
+        if(res.data!==""){
+            window.location = "/registerforevent";
+         }  
+        else{
+            window.location = "/login";        
+        }
     }
 
     
@@ -152,7 +158,7 @@ const CardEntry= (item)=> {
                 const res = await axios({
                     method: "GET",
                     withCredentials: true,
-                    url: "http://localhost:3000/registerforevent",
+                    url: "/registerforevent",
                 });
                 console.log(res.data);
                 //if(res.data!=="")name=res.data.username;
