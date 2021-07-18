@@ -8,4 +8,4 @@ let userSchema = new mongoose.Schema({
 // const out = mongoose.model('registeredUsers',userSchema);
 // console.log(out);
 
-module.exports = mongoose.model('registeredUsers',userSchema);
+module.exports = mongoose.model('registeredusers',userSchema);

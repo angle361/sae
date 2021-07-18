@@ -4,7 +4,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const notification = require("./models/notifications");
 const User = require('./models/users');
-//const RegisteredUser = require('./models/registeredUsers');
+const RegisteredUser = require('./models/registeredusers');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
@@ -104,15 +104,15 @@ app.get("/getUser",(req,res)=>{
   console.log(req.user);
 })
 
-// app.post("/registerforevent",(req,res)=>{
-//   const newRegisteredUser = new RegisteredUser({
-//     username: req.body.username,
-//     email: req.body.email,
-//   });
-//   newRegisteredUser.save();
-//   res.redirect("/");
+app.post("/registerforevent",(req,res)=>{
+  const newRegisteredUser = new RegisteredUser({
+    username: req.body.username,
+    email: req.body.email
+  });
+  newRegisteredUser.save();
+  res.redirect("/");
 
-// });
+});
 
 
 
