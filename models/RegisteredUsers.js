@@ -5,7 +5,7 @@ let userSchema = new mongoose.Schema({
     email : String,
 });
 
-// const out = mongoose.model('registeredUsers',userSchema);
-// console.log(out);
+const out = mongoose.model('registeredUsers',userSchema);
+console.log(out);
 
 module.exports = mongoose.model('registeredusers',userSchema);
