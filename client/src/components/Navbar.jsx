@@ -193,7 +193,7 @@ function Navbar() {
                             <Link className="nav-link" to="/login">Log In <EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/register">Register <EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
+                            <Link className="nav-link" to="/register">Sign Up<EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
                         </li>
                         {!isMobile && <li className="nav-item"><Notifications /></li>}
                             
