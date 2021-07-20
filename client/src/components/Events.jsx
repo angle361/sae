@@ -116,7 +116,7 @@ const CardEntryOnMobile = (item)=> {
                            
                                 <p style={{ whiteSpace: "pre-line" }}>{item.description.slice(0, 200) + "............"}</p>
                                 <Button onClick={ChangeStateAway} variant="outlined" style={{ backgroundColor: "white", color: "black", size:"small" ,marginRight:"20px"  }}>Back</Button>
-                               <Link to={name==""? "/login" : "/registerforevent"}> <Button onClick={getUser} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button></Link>
+                                <Button onClick={getUser} variant="outlined" style={{ backgroundColor: "white", color: "black" }}>Register</Button>
                             
                                 
                             </div>
