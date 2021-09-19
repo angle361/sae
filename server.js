@@ -66,7 +66,7 @@ app.get('/notifications', (req, res) => {
 app.post("/login", async (req, res, next) => {
   await passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists");
+    if (!user) res.send("No User Exists");  //displayed on screen
     else {
       req.logIn(user, (err) => {
         if (err) throw err;
