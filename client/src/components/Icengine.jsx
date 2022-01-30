@@ -6,7 +6,7 @@ function Icengine() {
       <h2 style={{ paddingTop: "50px" }}>The IC Engine</h2>
       <div className="row" style={{ padding: "10px" }}>
         <div>
-          <p>Machines which can convert chemical energy into mechanical energy are known as Internal 
+          <p>Machine which can convert chemical energy into mechanical energy are known as Internal 
             combustion engines(IC Engine).</p>
           <p>IC Engines are further classified accordingly:</p>
           <p>(a)Strokes</p>
