@@ -6,7 +6,7 @@ const projects = [
     {
         id: 1,
         name: "Smart Bike",
-        description: "A electic powered bike that uses the gyroscope to achive self balancing feature. It has its own GPS tracking and intelligent navigation. Other features like Fully Integrated - No Cables, No Wires, No External Components gives thrilling speed, a good battery life and comes with preloaded elevated features.",
+        description: "A electic powered bike that uses the gyroscope to achive self-balancing feature. It has its own GPS tracking and intelligent navigation. Other features like Fully Integrated - No Cables, No Wires, No External Components gives thrilling speed, a good battery life and comes with preloaded elevated features.",
         img: require("../images/smartbike.jpg")
     },
     {
