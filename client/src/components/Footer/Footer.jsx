@@ -3,7 +3,6 @@ import React from "react";
 import Resources from "./Resources"
 import Social from "./Social"
 
-
 export default function Footer() {
     const year = new Date().getFullYear(); 
     return (
