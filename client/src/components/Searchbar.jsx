@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import SearchIcon from '@material-ui/icons/Search';
 import { useMediaQuery } from 'react-responsive';
 
+
 export default function () {
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
