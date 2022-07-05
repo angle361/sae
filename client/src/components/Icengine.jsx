@@ -74,7 +74,7 @@ function Icengine() {
           </p>
           <p>(g) Cylinder Volume = Vs + Vc</p>
           <p>
-            h) Compression Ratio (r): ratio of cylinder volume to clearance
+            (h) Compression Ratio (r): ratio of cylinder volume to clearance
             volume.
           </p>
         </div>
@@ -163,28 +163,7 @@ function Icengine() {
         style={{ width: "100%", paddingBottom: "10px" }}
         alt=""
       />
-
-      <h2 style={{ paddingTop: "30px" }}>Based on Fuel type</h2>
-      <div className="row" style={{ padding: "10px" }}>
-        <p><b>1.Diesel:</b> Compression Ignition</p>
-        <p><b>2.Petrol(Gasoline):</b> Spark Ignition</p>
-      </div>
-
-      <h2 style={{ paddingTop: "30px" }}>Important Points</h2>
-      <div className="row" style={{ padding: "10px" }}>
-       <p>1.dgdgdfgvf </p>
-        <p><b>2.Petrol(Gasoline):</b> Spark Ignition</p>
-      </div>
-
-      <h2 style={{ paddingTop: "30px" }}>Resources</h2>
-      <div className="row" style={{ padding: "10px" }}>
-        <p><a href="">cdvdf</a></p>
-        <p><a href="">vfdv</a></p>
-        <p><a href="">vdd</a></p>
-        <p><a href="">vdfvd</a></p>
-      </div>
-      <p><a href="">vdd</a></p>
-        <p><a href="">vdfvd</a></p>
+       
     </div>
   );
 }

@@ -43,7 +43,7 @@ function CardEntry(item) {
     return (
         <div className="col-lg-4 project-box col-sm-12" >
             <div className={"project-card" + (onHover ? "-animated" : "")} onMouseEnter={ChangeStateOver} onMouseLeave={ChangeStateAway}>
-                <div className={"project-card-elements " + "project-card-elements-" + item.num} style={{ display: (!onHover ? "block" : "none") }} >
+                <div className={'project-card-elements' + 'project-card-elements-' + item.num} style={{ display: (!onHover ? "block" : "none") }} >
                     <img className="project-images" src={item.img} alt={item.name} />
                     <h3>{item.name}</h3>
                 </div>

@@ -66,7 +66,10 @@ app.get('/notifications', (req, res) => {
 app.post("/login", async (req, res, next) => {
   await passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists");  //displayed on screen
+    if (!user){
+      console.log("user not found");
+      res.redirect("/login");
+    }
     else {
       req.logIn(user, (err) => {
         if (err) throw err;

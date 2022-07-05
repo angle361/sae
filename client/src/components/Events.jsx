@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Button } from '@material-ui/core';
 import { useMediaQuery } from 'react-responsive';
-import { Link } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 import axios from 'axios';
-
 import aquadrive from "../images/aquadrivelow.jpg";
 import axelerate from "../images/Axelerate.jpg";
 import designing from "../images/design.jpg";
@@ -56,7 +53,7 @@ const events = [
     }
 
 ];
-let name="";
+
 const CardEntryOnMobile = (item)=> {
 
     const [variable, setVariable] = useState(false);

@@ -1,5 +1,4 @@
-import React ,{useContext} from "react";
-import { StateContext } from './StateProvider';
+import React from "react";
 
 function Login() {
 
