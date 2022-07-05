@@ -38,8 +38,9 @@ function CardEntry(item) {
                 <img className={item.imgStyle} src={item.img} alt={item.name} />
                 <h4>{item.name}</h4>
                 <p className="footer-box-people-description">{item.description}</p>
+                <p className="footer-box-people-description">{item.mail}</p>
             </a>
-            <p className="footer-box-people-description">{item.mail}</p>
+            
         </div>
     );
 }

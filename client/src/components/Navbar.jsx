@@ -186,7 +186,7 @@ function Navbar() {
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link" href="#footer">Contact <GroupIcon style={{ fontSize: "20" }} /></a>
+                            <Link className="nav-link" to="/contacts">Contacts <EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
                         </li>
 
                         <li className="nav-item">

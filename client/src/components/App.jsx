@@ -2,6 +2,7 @@ import React from "react";
 import Navbar from "./Navbar";
 import Projects from "./Projects";
 import Events from "./Events";
+import Contacts from "./Footer/People";
 import Footer from "./Footer/Footer";
 import Title from "./Title";
 import Icengine from "./Icengine";
@@ -20,6 +21,7 @@ function App() {
                     <Route path="/" exact component={Title} />
                     <Route path="/projects" component={Projects} />
                     <Route path="/events" component={Events} />
+                    <Route path="/contacts" component={Contacts} />
                     <Route path="/icengine" component={Icengine}/>
                     <Route path="/login" exact component={Login}/>
                     <Route path="/register" exact component={Register}/>
