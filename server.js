@@ -8,7 +8,6 @@ const RegisteredUser = require('./models/regisusers');
 const cors = require('cors');
 const session = require('express-session');
 const passport = require('passport');
-const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
 const dotenv = require('dotenv');

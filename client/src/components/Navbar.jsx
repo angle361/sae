@@ -13,12 +13,6 @@ import NotificationsIcon from '@material-ui/icons/Notifications';
 import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
 
-// const isMobile = useMediaQuery({
-//     query: '(max-device-width: 768px)'
-// });
-
-
-
 // const notifications = [
 //     {
 //         id: 1,
@@ -46,14 +40,12 @@ function NotificationItem(props) {
     if (isMobile) {
         return (
             <div className="notification-item">
-                {/* <a href=""> */}
                 <div className="ss">
                     <p style={{ color: "white" }}> <EventNoteIcon /></p>
                 </div>
                 <div className="sm">
                     <p style={{ fontWeight: "600", display: "inline", color: "white" }}> {props.date} | {props.description}</p>
                 </div>
-                {/* </a> */}
                 <hr className="notification-separator" />
             </div>
         );
@@ -79,9 +71,7 @@ function Notifications() {
     const apiURL = "/notifications";
     const fetchData = async () => {
         const response = await axios.get(apiURL);
-        // console.log(response.data.length);
         setNotify(response.data);
-        //console.log(notify);
     }
     useEffect(() => { fetchData(); });
     
@@ -107,7 +97,7 @@ function Notifications() {
                                 date={notification.date}
                             />
                         )}
-                        {/* {!notify.length && <h1>{notify}</h1>} */}
+                        
                     </div>
                 </div>
             </div>
@@ -122,27 +112,22 @@ function Navbar() {
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
     });
-    const [searchEnabled, SearchEnableToggle] = useState(false);//it means initial value of searchEnabled is false
+    // const [searchEnabled, SearchEnableToggle] = useState(false);//it means initial value of searchEnabled is false
 
-    function SearchToggle() {
-        if (searchEnabled === true) {
-            SearchEnableToggle(false);
-        } else {
-            SearchEnableToggle(true);
-        }
-    }
+    // function SearchToggle() {
+    //     if (searchEnabled === true) {
+    //         SearchEnableToggle(false);
+    //     } else {
+    //         SearchEnableToggle(true);
+    //     }
+    // }
 
-    const [collapseEnable,setCollapseEnable] = useState(false);
-    function Collapse(){
-
-    }
-    
-        window.addEventListener('click', ()=>{
-            setCollapseEnable(true);
-        });
-      
-    
-      
+    // const [collapseEnable,setCollapseEnable] = useState(false);
+    // function Collapse(){
+    //     window.addEventListener('click', ()=>{
+    //     setCollapseEnable(true);
+    //     });
+    // }
 
     return (
         <div className="header-navigator">
@@ -163,7 +148,6 @@ function Navbar() {
                     <ListIcon style={{ color: "white" }} />
                 </button>
 
-                {/* {collapseEnable && <div><h1>sanyam</h1></div>} */}
 
 
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
@@ -173,9 +157,9 @@ function Navbar() {
                             <Link className="nav-link" to="/">Home <HomeIcon style={{ fontSize: "18" }} /></Link>
                         </li>
 
-                        {isMobile && <li>
+                        {/* {isMobile && <li>
                             <Link className="nav-link" onClick={SearchToggle} to="/">Search <SearchIcon style={{ fontSize: "18" }} /></Link>
-                        </li>}
+                        </li>} */}
 
                         <li className="nav-item">
                             <Link className="nav-link" to="/projects">Projects <AccountTreeIcon style={{ fontSize: "18" }} /></Link>
@@ -186,20 +170,17 @@ function Navbar() {
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/contacts">Contacts <EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
+                            <Link className="nav-link" to="/contacts">Contacts <GroupIcon style={{ fontSize: "19" }} /></Link>
                         </li>
 
                         <li className="nav-item">
-                            <Link className="nav-link" to="/login">Log In <EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
+                            <Link className="nav-link" to="/login">LogIn</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/register">Sign Up<EmojiEventsIcon style={{ fontSize: "19" }} /></Link>
+                            <Link className="nav-link" to="/register">SignUp</Link>
                         </li>
                         {!isMobile && <li className="nav-item"><Notifications /></li>}
                             
-                        
-
-
                     </ul>
                 </div>
 
