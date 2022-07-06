@@ -11,7 +11,8 @@ const passport = require('passport');
 const passportLocal = require("passport-local").Strategy;
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcryptjs");
-
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -25,11 +26,12 @@ app.use(
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const DB = "mongodb+srv://angle361:Test123@cluster0.ful1v.mongodb.net/saeDB?retryWrites=true&w=majority";
-mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true });
-// then(() => {
-//   console.log("connection successful");
-// });
+const DB = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.ful1v.mongodb.net/saeDB?retryWrites=true&w=majority`;
+mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
+  console.log("connection successful");
+}).catch((e)=>{
+  console.log("no connection ");
+});
 
 //AUTHENTICATION SETUP
 app.use(session({
@@ -58,7 +60,6 @@ app.post('/api/world', (req, res) => {
 
 app.get('/notifications', (req, res) => {
   notification.find(function (err, notifications) {
-    // var myJsonString = JSON.parse(notifications);
     res.send(notifications);
   });
 });
