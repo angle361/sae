@@ -29,10 +29,6 @@ function Register() {
 						<button type="submit">Signup</button>
 					</form>
 				</div>
-
-
-
-
 			</div>
 		</div>
 	);

@@ -82,11 +82,11 @@ app.post("/login", async (req, res) => {
     }
   })(req, res);
 });
-app.delete("/logout", (req,res) => {
-  req.logOut()
-  res.redirect("/login")
-  console.log("User Logged out")
-})
+app.post("/logout", (req,res) => {
+  req.logout();
+  res.send('loged out')
+  console.log("User Logged out");
+});
 app.post("/register", (req, res) => {
   User.findOne({ username: req.body.username }, async (err, doc) => {
     if (err) throw err;

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect} from "react";
 import logo from "../images/saelogohd2.png";
+//import { Button } from '@material-ui/core';
 import EventNoteIcon from '@material-ui/icons/EventNote';
 import GroupIcon from '@material-ui/icons/Group';
 import AccountTreeIcon from '@material-ui/icons/AccountTree';
@@ -10,7 +11,7 @@ import { useMediaQuery } from 'react-responsive';
 import ListIcon from '@material-ui/icons/List';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 // import Searchbar from "./Searchbar";
-import SearchIcon from '@material-ui/icons/Search';
+//import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
 
 // const notifications = [
@@ -66,21 +67,26 @@ function NotificationItem(props) {
     }
 }
 
+const fetchData = async ()=>{
+    const apiURL = "/notifications";
+    let res = await axios.get(apiURL);
+    return res.data;
+}
+
 function Notifications() {
     const [notify, setNotify] = useState([]);
-    const apiURL = "/notifications";
-    const fetchData = async () => {
-        const response = await axios.get(apiURL);
-        setNotify(response.data);
-    }
-    useEffect(() => { fetchData(); });
+    useEffect(()=>{
+        const setData = async ()=>{
+            setNotify(await fetchData())
+        }
+        setData()
+    },[]) 
     
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
     });
+    
     return (
-
-        <div >
 
             <div className="dropdown" >
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -101,14 +107,23 @@ function Notifications() {
                     </div>
                 </div>
             </div>
-        </div>
+        
 
     );
 }
 
 
+
 function Navbar() {
 
+    const logOut = async () => {
+
+        let res = await axios.post("/logout");
+        if(res.status === 200){
+            console.log("logged out");
+            window.location = "/";
+        }
+    }
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
     });
@@ -137,7 +152,7 @@ function Navbar() {
                 <img className="saelogo" src={logo} alt="saelogo" />
                     <Link className="navbar-brand" to="/">
                         
-                        <h6 >{isMobile ? "SAE IIT BHU" : "Society of Automotive Engineers - IIT BHU Varanasi"}</h6>
+                        <h6 >{isMobile ? "SAE IIT BHU" : "SAE - IIT BHU Varanasi"}</h6>
                     </Link>
                 </div>
 
@@ -179,6 +194,9 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/register">SignUp</Link>
                         </li>
+                        {!isMobile && <li className="nav-item">
+                            <button onClick= {logOut}className="nav-link">LogOut</button>
+                        </li>}
                         {!isMobile && <li className="nav-item"><Notifications /></li>}
                             
                     </ul>
