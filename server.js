@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const MongoClient = require('mongodb').MongoClient;
 const path = require('path');
 const bodyParser = require('body-parser');
 const notification = require("./models/notifications");
@@ -23,12 +24,14 @@ app.use(
     credentials: true,
   })
 );
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const DB = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.ful1v.mongodb.net/saeDB?retryWrites=true&w=majority`;
 mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   console.log("connection successful");
 }).catch((e)=>{
+  console.log(e);
   console.log("no connection ");
 });
 
@@ -76,7 +79,7 @@ app.post("/login", async (req, res) => {
         else{
           // res.send("Successfully Authenticated");
           res.redirect("/");
-          console.log(req.user);
+          //console.log(req.user);
         }
       });
     }
