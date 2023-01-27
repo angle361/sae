@@ -127,8 +127,6 @@ app.post("/registerforevent",(req,res)=>{
 
 });
 
-
-
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
   app.use(express.static('client/build'));
