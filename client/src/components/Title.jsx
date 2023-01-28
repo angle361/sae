@@ -32,7 +32,7 @@ export default function () {
     return (
         <section id="title">
             <div className="title-description">
-            {isMobile? <h1>Welcome to SAE's official Website</h1> : <h1>Welcome to SAE's official Website</h1> }
+            {isMobile? <h1>Welcome to Sanyam's official Website</h1> : <h1>Welcome to SAE's official Website</h1> }
                 <div className="row">
                     <div className="col-lg-6 col-sm-12">
                         <About />
