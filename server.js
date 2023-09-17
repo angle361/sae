@@ -85,6 +85,7 @@ app.post("/login", async (req, res) => {
     }
   })(req, res);
 });
+//logout
 app.post("/logout", (req,res) => {
   req.logout();
   res.send('loged out')
