@@ -27,6 +27,7 @@ app.use(
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+//database connection
 const DB = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.ful1v.mongodb.net/saeDB?retryWrites=true&w=majority`;
 mongoose.connect(DB, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => {
   console.log("connection successful");

@@ -1,12 +1,12 @@
 {
-  "name": "example-create-react-app-express",
+  "name": "create-react-app-express",
   "version": "1.0.0",
-  "description": "Example on using create-react-app with a Node Express Backend",
+  "description": "A Node Express Backend",
   "author": "sanyam",
   "license": "MIT",
   "scripts": {
     "client": "npm start --prefix client",
-    "server": "nodemon server",
+    "server": "nodemon backend/server",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
     "start": "node server",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
