@@ -61,12 +61,26 @@ app.post('/api/world', (req, res) => {
   );
 });
 
+//deprecated
+// app.get('/notifications', (req, res) => {
+//   notification.find(function (err, notifications) {
+//     res.send(notifications);
+//   });
+// });
 
 app.get('/notifications', (req, res) => {
-  notification.find(function (err, notifications) {
-    res.send(notifications);
+  
+  notification.find({}).exec()
+  .then(notifications =>
+    res.send(notifications)
+  )
+  .catch(err => {
+    console.error(err);
   });
+
 });
+
+
 
 app.post("/login", async (req, res) => {
   await passport.authenticate("local", (err, user, info) => {
