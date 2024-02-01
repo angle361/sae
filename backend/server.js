@@ -81,7 +81,7 @@ app.get('/notifications', (req, res) => {
 });
 
 
-
+//login
 app.post("/login", async (req, res) => {
   await passport.authenticate("local", (err, user, info) => {
     if (err) throw err;
