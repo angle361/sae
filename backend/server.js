@@ -25,7 +25,6 @@ app.use(
   })
 );
 
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //database connection
@@ -61,13 +60,6 @@ app.post('/api/world', (req, res) => {
   );
 });
 
-//deprecated
-// app.get('/notifications', (req, res) => {
-//   notification.find(function (err, notifications) {
-//     res.send(notifications);
-//   });
-// });
-
 app.get('/notifications', (req, res) => {
   
   notification.find({}).exec()
@@ -83,55 +75,88 @@ app.get('/notifications', (req, res) => {
 
 //login
 app.post("/login", async (req, res) => {
-  await passport.authenticate("local", (err, user, info) => {
-    if (err) throw err;
-    if (!user){
-      console.log("user not found");
-      res.redirect("/login");
-    }
-    else {
+  try {
+    await passport.authenticate("local", (err, user, info) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send("Internal Server Error");
+      }
+
+      if (!user) {
+        console.log("User not found");
+        return res.redirect("/login");
+      }
+
       req.logIn(user, (err) => {
-        if (err) throw err;
-        else{
-          // res.send("Successfully Authenticated");
-          res.redirect("/");
-          //console.log(req.user);
+        if (err) {
+          console.error(err);
+          return res.status(500).send("Internal Server Error");
         }
+
+        console.log("User logged in");
+        return res.redirect("/");
       });
-    }
-  })(req, res);
+    })(req, res);
+  } catch (err) {
+    console.error(err);
+    return res.status(500).send("Internal Server Error");
+  }
 });
+
 //logout
 app.post("/logout", (req,res) => {
-  req.logout();
-  res.send('loged out')
-  console.log("User Logged out");
+  
+  if (req.isAuthenticated()) {
+    req.logout((err) => {
+      if (err) {
+        console.error("Error during logout:", err);
+        return res.status(500).send('Error during logout');
+      }
+   // console.log(req.user);
+    console.log("User Logged out");
+    return res.redirect("/");
+    
+    });
+    
+  } else {
+    console.log("No user to log out");
+    return res.status(401).send('No user to log out');
+  }
 });
-app.post("/register", (req, res) => {
-  User.findOne({ username: req.body.username }, async (err, doc) => {
-    if (err) throw err;
-    if (doc){ 
-     //res.send("already registered");
-      res.redirect("/login");
-    }
-    if (!doc) {
-      const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-      const newUser = new User({
-        username: req.body.username,
-        password: hashedPassword,
-      });
-      await newUser.save();
-      //res.send("registered");
-      res.redirect("/login");
+
+app.post("/register", (req, res) => {
+  User.findOne({ username: req.body.username }) 
+    .then(async (doc) => {
       
-    }
-  });
+      if (doc){ 
+      //res.send("already registered");
+        res.redirect("/login");
+      }
+      if (!doc) {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+
+        const newUser = new User({
+          username: req.body.username,
+          password: hashedPassword,
+        });
+        await newUser.save();
+        //res.send("registered");
+        res.redirect("/login");
+        
+      }
+      }
+    )
+    .catch(err => {
+      console.error(err);
+    });
+
 });
 
 app.get("/getUser",(req,res)=>{
+  
   res.send(req.user);
-  console.log(req.user);
+  //console.log(req.user);
 })
 
 app.post("/registerforevent",(req,res)=>{

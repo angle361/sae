@@ -5,10 +5,10 @@ const localStrategy = require("passport-local").Strategy;
 module.exports = function (passport) {
   passport.use(
     new localStrategy((username, password, done) => {
-
-      User.findOne({ username: username }).exec()
-      .then((err, user) => {
-        if (err) throw err;
+      
+      User.findOne({ username: username })
+      .then((user) => {
+    
         if (!user) return done(null, false);
         
         bcrypt.compare(password, user.password, (err, result) => {
@@ -32,11 +32,15 @@ module.exports = function (passport) {
     cb(null, user.id);
   });
   passport.deserializeUser((id, cb) => {
-    User.findOne({ _id: id }, (err, user) => {
+    User.findOne({ _id: id })
+    .then((user) => {
+      if (!user) {
+        return cb(null, false);  // User not found
+      }
       const userInformation = {
-        username: user.username,
+        username: user?.username,
       };
-      cb(err, userInformation);
+      cb(null, userInformation);
     });
   });
 };
