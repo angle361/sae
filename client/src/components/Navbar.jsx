@@ -68,8 +68,9 @@ function NotificationItem(props) {
 }
 
 const fetchData = async ()=>{
-    const apiURL = "https://backend-silk-alpha.vercel.app/notifications";
+    const apiURL = "/notifications";
     let res = await axios.get(apiURL);
+    //console.log(res);
     return res.data;
 }
 
@@ -112,18 +113,24 @@ function Notifications() {
     );
 }
 
+const logOut = async () => {
 
+    try {
+        let res = await axios.post("/logout");
+        //console.log(res);
+
+        if (res.status === 200) {
+            console.log("logged out");
+            window.location.replace("/");
+        }
+    } catch (error) {
+        console.error("Logout failed:", error);
+    }
+}
 
 function Navbar() {
 
-    const logOut = async () => {
-
-        let res = await axios.post("/logout");
-        if(res.status === 200){
-            console.log("logged out");
-            window.location = "/";
-        }
-    }
+    
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
     });

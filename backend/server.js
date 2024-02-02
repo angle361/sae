@@ -20,7 +20,7 @@ const port = process.env.PORT || 5001;
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "http://localhost:3000", // <-- location of the react app were connecting to
+    origin: "https://sae-iitbhu.vercel.app/", // <-- location of the react app were connecting to
     credentials: true,
   })
 );

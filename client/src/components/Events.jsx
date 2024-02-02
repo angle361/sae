@@ -149,27 +149,22 @@ const CardEntry= (item)=> {
     
   
     
-        const getUser = async ()=>{
-            
-            
-                const res = await axios({
-                    method: "GET",
-                    withCredentials: true,
-                    url: "/getUser",
-                });
-                console.log(res.data);
-                //if(res.data!=="")name=res.data.username;
-                //name=res.data.username;
-                console.log("gg");
-                
-            
-            if(res.data!==""){
-                window.location = "/registerforevent";
-             }  
-            else{
-                window.location = "/login";        
-            }
+    const getUser = async ()=>{
+        
+        
+        const res = await axios({
+            method: "GET",
+            withCredentials: true,
+            url: "/getUser",
+        }); 
+        
+        if(res.data!==""){
+            window.location = "/registerforevent";
+            }  
+        else{
+            window.location = "/login";        
         }
+    }
         
     
     return (

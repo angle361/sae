@@ -5,6 +5,7 @@
   "homepage": "",
   "keywords": [],
   "main": "src/index.js",
+  "proxy":"https://backend-silk-alpha.vercel.app",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
