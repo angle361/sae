@@ -19,10 +19,7 @@ const port = process.env.PORT || 5001;
 
 app.use(bodyParser.json());
 app.use(
-  cors({
-    origin: "https://sae-iitbhu.vercel.app/", // <-- location of the react app were connecting to
-    credentials: true,
-  })
+  cors()
 );
 
 app.use(bodyParser.urlencoded({ extended: true }));
