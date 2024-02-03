@@ -69,7 +69,7 @@ function NotificationItem(props) {
 
 const fetchData = async ()=>{
     console.log("***fetching data****");
-    const apiURL = "https://backend-silk-alpha.vercel.app/notifications";
+    const apiURL = "/notifications";
     let res = await axios.get(apiURL);
     //console.log(res);
     return res.data;
