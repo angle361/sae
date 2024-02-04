@@ -98,7 +98,7 @@ function Notifications() {
                 <div className="dropdown-container" >
                     <div className="dropdown-menu dropdown-style" aria-labelledby="dropdownMenuButton">
 
-                        {notify.length && notify.map((notification) =>
+                        {Array.isArray(notify) && notify.length >0 && notify.map((notification) =>
                             <NotificationItem
                                 key={notification.id}
                                 description={notification.description}
