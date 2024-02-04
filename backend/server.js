@@ -81,7 +81,7 @@ app.post("/login", async (req, res) => {
 
       if (!user) {
         console.log("User not found");
-        return res.redirect("/login");
+        return res.redirect("https://sae-iitbhu.vercel.app/login");
       }
 
       req.logIn(user, (err) => {
@@ -91,7 +91,7 @@ app.post("/login", async (req, res) => {
         }
 
         console.log("User logged in");
-        return res.redirect("/");
+        return res.redirect("https://sae-iitbhu.vercel.app/");
       });
     })(req, res);
   } catch (err) {
