@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import React from "react";
 import axios from 'axios';
+const dotenv = require('dotenv');
+dotenv.config();
+
+const backend_url = process.env.REACT_APP_BACKEND_PROD_URL ;
 
 function Login() {
 	
@@ -11,7 +15,7 @@ function Login() {
 		e.preventDefault();
 
 		try {
-			const response = await axios.post('https://backend-silk-alpha.vercel.app/login', {
+			const response = await axios.post(`${backend_url}login`, {
 			username: email,
 			password: password,
 			});
