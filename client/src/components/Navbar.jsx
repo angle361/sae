@@ -10,29 +10,12 @@ import { Link } from "react-router-dom";
 import { useMediaQuery } from 'react-responsive';
 import ListIcon from '@material-ui/icons/List';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-// import Searchbar from "./Searchbar";
-//import SearchIcon from '@material-ui/icons/Search';
 import axios from 'axios';
+const dotenv = require('dotenv');
+dotenv.config();
 
-// const notifications = [
-//     {
-//         id: 1,
-//         date: "October 28, 2020",
-//         description: "SAE official quiz to be taken. Click here to register."
-//     },
-//     {
-//         id: 2,
-//         description: "The club is started interviews for the core members of session 2020-21",
-//         date: "October 8, 2020"
-//     },
-//     {
-//         id: 3,
-//         description: "SAE anounces its new secretaries for session 2020",
-//         date: "July 20, 2020"
-//     }
-
-// ]
-
+const backend_url = process.env.REACT_APP_BACKEND_PROD_URL ;
+console.log(backend_url);
 function NotificationItem(props) {
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
@@ -69,7 +52,7 @@ function NotificationItem(props) {
 
 const fetchData = async ()=>{
     console.log("***fetching data****");
-    const apiURL = "https://backend-silk-alpha.vercel.app/notifications";
+    const apiURL = `${backend_url}notifications`;
     let res = await axios.get(apiURL);
     //console.log(res);
     return res.data;
