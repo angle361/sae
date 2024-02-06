@@ -15,18 +15,37 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5001;
+const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
-// Middleware to set CORS headers
+// const corsOptions = {
+//   origin: 'https://sae-iitbhu.vercel.app',
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//   credentials: true,
+//   optionsSuccessStatus: 204,
+//   allowedHeaders: 'Content-Type, Authorization',
+// };
+// app.use(cors(corsOptions));
+// app.options('*', cors(corsOptions));
+app.use(cors());
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://sae-iitbhu.vercel.app');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  //res.header('Access-Control-Allow-Credentials', 'true'); // Add this line if you're using credentials
+
   next();
 });
-app.use(cors());
+app.options('*', (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.sendStatus(200);
+});
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //database connection
@@ -51,15 +70,8 @@ app.use(passport.session());
 require("./passportConfig")(passport);
 
 // API calls
-app.get('/api/hello', (req, res) => {
+app.get('/app', (req, res) => {
   res.send({ express: 'Hello From Express' });
-});
-
-app.post('/api/world', (req, res) => {
-  console.log(req.body);
-  res.send(
-    `I received your POST request. This is what you sent me: ${req.body.post}`,
-  );
 });
 
 app.get('/notifications', (req, res) => {
@@ -77,16 +89,18 @@ app.get('/notifications', (req, res) => {
 
 //login
 app.post("/login", async (req, res) => {
+;
   try {
     await passport.authenticate("local", (err, user, info) => {
       if (err) {
         console.error(err);
         return res.status(500).send("Internal Server Error");
       }
+      
 
       if (!user) {
         console.log("User not found");
-        return res.redirect("https://sae-iitbhu.vercel.app/login");
+        return res.status(400).send("User not found");
       }
 
       req.logIn(user, (err) => {
@@ -96,7 +110,7 @@ app.post("/login", async (req, res) => {
         }
 
         console.log("User logged in");
-        return res.redirect("https://sae-iitbhu.vercel.app/");
+        return res.status(200).send("Login Successful");
       });
     })(req, res);
   } catch (err) {
@@ -115,8 +129,8 @@ app.post("/logout", (req,res) => {
         return res.status(500).send('Error during logout');
       }
    // console.log(req.user);
-    console.log("User Logged out");
-    return res.redirect("/");
+    console.log("User logged out");
+    return res.status(200).send("User logged out");
     
     });
     
@@ -133,7 +147,7 @@ app.post("/register", (req, res) => {
       
       if (doc){ 
       //res.send("already registered");
-        res.redirect("/login");
+        return res.status(200).send("User already logged in");
       }
       if (!doc) {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
@@ -144,11 +158,11 @@ app.post("/register", (req, res) => {
         });
         await newUser.save();
         //res.send("registered");
-        res.redirect("/login");
+        return res.status(200).send("User registered");
         
       }
-      }
-    )
+      
+    })
     .catch(err => {
       console.error(err);
     });
@@ -167,7 +181,7 @@ app.post("/registerforevent",(req,res)=>{
     email: req.body.email
   });
   newRegisteredUser.save();
-  res.redirect("/");
+  return res.status(200).send("User registered for event");
 
 });
 
