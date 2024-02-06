@@ -22,7 +22,7 @@ function Login() {
 			if (response.status === 200) {
 				console.log("User logged in");
 				alert("User logged in");
-				window.location.replace("/");
+				window.location = "/";
 			}
 
 		} catch (error) {

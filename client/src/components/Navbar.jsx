@@ -51,10 +51,10 @@ function NotificationItem(props) {
 }
 
 const fetchData = async ()=>{
-    console.log("***fetching data****");
+    //console.log("***fetching data****");
     const apiURL = `${backend_url}notifications`;
     let res = await axios.get(apiURL);
-    //console.log(res);
+    console.log("Notifications fetched");
     return res.data;
 }
 
@@ -103,7 +103,8 @@ const logOut = async () => {
         let res = await axios.post(`${backend_url}logout`);
 
         if (res.status === 200) {
-            console.log("logged out");
+            //console.log("logged out");
+            alert("User logged out, please visit again");
             window.location.replace("/");
         }
     } catch (error) {
