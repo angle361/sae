@@ -19,21 +19,11 @@ const port = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 
-// const corsOptions = {
-//   origin: 'https://sae-iitbhu.vercel.app',
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//   credentials: true,
-//   optionsSuccessStatus: 204,
-//   allowedHeaders: 'Content-Type, Authorization',
-// };
-// app.use(cors(corsOptions));
-// app.options('*', cors(corsOptions));
 app.use(cors());
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-  //res.header('Access-Control-Allow-Credentials', 'true'); // Add this line if you're using credentials
 
   next();
 });
@@ -169,13 +159,13 @@ app.post("/register", (req, res) => {
 
 });
 
-app.get("/getUser",(req,res)=>{
+app.get("/user",(req,res)=>{
   
   res.send(req.user);
   //console.log(req.user);
 })
 
-app.post("/registerforevent",(req,res)=>{
+app.post("/event/register",(req,res)=>{
   const newRegisteredUser = new RegisteredUser({
     username: req.body.username,
     email: req.body.email

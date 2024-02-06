@@ -21,13 +21,12 @@ function Login() {
 			});
 			if (response.status === 200) {
 				console.log("User logged in");
+				alert("User logged in");
 				window.location.replace("/");
 			}
 
-			// Handle the response as needed
-			console.log('Login successful:', response.data);
 		} catch (error) {
-			// Handle error
+			
 			console.error('Login error:', error);
 		}
 	};

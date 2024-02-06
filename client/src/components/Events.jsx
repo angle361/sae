@@ -151,18 +151,14 @@ const CardEntry= (item)=> {
     
     const getUser = async ()=>{
         
-        
-        const res = await axios({
-            method: "GET",
-            withCredentials: true,
-            url: "/getUser",
-        }); 
+        const apiURL = `${backend_url}user`;
+        let res = await axios.get(apiURL); 
         
         if(res.data!==""){
-            window.location = "/registerforevent";
+            window.location.replace("/registerforevent");
             }  
         else{
-            window.location = "/login";        
+            window.location.replace("/login");        
         }
     }
         
