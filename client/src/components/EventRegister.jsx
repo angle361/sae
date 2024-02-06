@@ -8,7 +8,8 @@ function EventRegister() {
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
+	const backend_url = process.env.REACT_APP_BACKEND_PROD_URL ;
+	
 	const handleFormSubmit = async (e) => {
 		e.preventDefault();
 

@@ -15,7 +15,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const backend_url = process.env.REACT_APP_BACKEND_PROD_URL ;
-console.log(backend_url);
+//console.log(backend_url);
 function NotificationItem(props) {
     const isMobile = useMediaQuery({
         query: '(max-device-width: 768px)'
@@ -100,8 +100,7 @@ function Notifications() {
 const logOut = async () => {
 
     try {
-        let res = await axios.post("/logout");
-        //console.log(res);
+        let res = await axios.post(`${backend_url}logout`);
 
         if (res.status === 200) {
             console.log("logged out");

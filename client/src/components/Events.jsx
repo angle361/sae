@@ -9,7 +9,7 @@ import workshop from "../images/screws.png";
 import quiz from "../images/quiz.png";
 import outfest from "../images/rc2.jpg"
 
-
+const backend_url = process.env.REACT_APP_BACKEND_PROD_URL ;
 const events = [
     {
         id: 1,
@@ -70,20 +70,15 @@ const CardEntryOnMobile = (item)=> {
         animationDuration: "0.5s"
     }
     const getUser = async ()=>{
-       // name="";
-        const res = await axios({
-            method: "GET",
-            withCredentials: true,
-            url: "/getUser",
-        });
-        console.log(res.data);
-        // if(res.data)name=res.data.username;
-        // console.log("dcfs");
+
+        const apiURL = `${backend_url}user`;
+        let res = await axios.get(apiURL); 
+        
         if(res.data!==""){
-            window.location = "/registerforevent";
-         }  
+            window.location.replace("/registerforevent");
+            }  
         else{
-            window.location = "/login";        
+            window.location.replace("/login");        
         }
     }
 
