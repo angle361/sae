@@ -8,6 +8,8 @@ import designing from "../images/design.jpg";
 import workshop from "../images/screws.png";
 import quiz from "../images/quiz.png";
 import outfest from "../images/rc2.jpg"
+const dotenv = require('dotenv');
+dotenv.config();
 
 const backend_url = process.env.REACT_APP_BACKEND_PROD_URL ;
 const events = [

@@ -137,7 +137,7 @@ app.post("/register", (req, res) => {
       
       if (doc){ 
       //res.send("already registered");
-        return res.status(200).send("User already logged in");
+        return res.status(200).send("User already registered");
       }
       if (!doc) {
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
