@@ -19,6 +19,10 @@ function Login() {
 			username: email,
 			password: password,
 			});
+			if (response.status === 200) {
+				console.log("User logged in");
+				window.location.replace("/");
+			}
 
 			// Handle the response as needed
 			console.log('Login successful:', response.data);
